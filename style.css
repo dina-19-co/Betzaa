@@ -1,0 +1,692 @@
+/* Custom Properties (متغيرات CSS) */
+:root {
+    --primary-black: #1a1a1a;
+    --secondary-black: #333333;
+    --white: #ffffff;
+    --light-gray: #f5f5f5;
+    --medium-gray: #e0e0e0;
+    --dark-gray: #555555;
+    --accent-red: #D32F2F; /* لمسة لونية خفيفة للبيتزا/العروض */
+    --accent-orange: #FFAB00; /* لمسة لونية خفيفة أخرى */
+    --font-cairo: 'Cairo', sans-serif;
+    --font-playfair: 'Playfair Display', serif;
+}
+
+/* Base Styles (الأنماط الأساسية) */
+body {
+    font-family: var(--font-cairo);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--secondary-black);
+    direction: rtl; /* لضمان دعم اللغة العربية بشكل كامل */
+    text-align: right; /* محاذاة النص لليمين */
+    overflow-x: hidden; /* لمنع ظهور شريط التمرير الأفقي */
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary-black);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-red);
+}
+
+h1, h2, h3 {
+    font-family: var(--font-playfair);
+    color: var(--primary-black);
+    margin-bottom: 0.8em;
+}
+
+h1 {
+    font-size: 3.5em;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-red);
+    border-radius: 5px;
+}
+
+.section-description {
+    text-align: center;
+    font-size: 1.1em;
+    color: var(--dark-gray);
+    margin-bottom: 2em;
+}
+
+/* Buttons (الأزرار) */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.primary-btn {
+    background-color: var(--primary-black);
+    color: var(--white);
+}
+
+.primary-btn:hover {
+    background-color: var(--accent-red);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.secondary-btn {
+    background-color: var(--medium-gray);
+    color: var(--primary-black);
+    border: 1px solid var(--dark-gray);
+}
+
+.secondary-btn:hover {
+    background-color: var(--dark-gray);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Header (الرأس) */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header .logo img {
+    height: 50px;
+    display: block;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav a {
+    font-size: 1.05em;
+    font-weight: 600;
+    position: relative;
+    padding: 5px 0;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-red);
+    bottom: 0;
+    right: 0; /* ليتوافق مع RTL */
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+.nav-toggle {
+    display: none; /* مخفي افتراضياً لسطح المكتب */
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    color: var(--primary-black);
+}
+
+/* Hero Section (قسم البطل) */
+.hero-section {
+    background: url('https://via.placeholder.com/1920x800/000000/FFFFFF?text=Delicious+Pizza+Background') no-repeat center center/cover;
+    height: 600px; /* ارتفاع ثابت للقسم */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* طبقة شفافة داكنة */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    color: var(--white);
+    font-size: 4.5em; /* أكبر حجماً */
+    margin-bottom: 0.2em;
+    animation: fadeInDown 1s ease-out;
+}
+
+.hero-content p {
+    font-size: 1.5em;
+    margin-bottom: 1.5em;
+    animation: fadeInUp 1s ease-out 0.3s forwards; /* تأخير بسيط */
+    opacity: 0; /* يبدأ مخفياً */
+}
+
+.hero-content .btn {
+    animation: zoomIn 1s ease-out 0.6s forwards; /* تأخير أكبر */
+    opacity: 0; /* يبدأ مخفياً */
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Menu Section (قسم قائمة الطعام) */
+.menu-section {
+    padding: 50px 5%;
+    background-color: var(--white);
+    margin-bottom: 50px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.menu-item {
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.menu-item h3 {
+    font-size: 1.6em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--primary-black);
+}
+
+.menu-item p {
+    font-size: 0.95em;
+    color: var(--dark-gray);
+    padding: 0 15px;
+    margin-bottom: 15px;
+}
+
+.menu-item .price {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--accent-red);
+}
+
+/* About Us Section (قسم عنا) */
+.about-section {
+    padding: 60px 5%;
+    background-color: var(--primary-black); /* خلفية سوداء لتمييز القسم */
+    color: var(--white);
+    margin-bottom: 50px;
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap; /* للسماح بالعناصر بالانتقال لأسطر جديدة على الشاشات الصغيرة */
+    gap: 40px;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-content img {
+    flex: 1 1 400px; /* للتحكم في حجم الصورة */
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.about-text {
+    flex: 2 1 400px; /* للنص لملء المساحة المتبقية */
+}
+
+.about-text h2 {
+    color: var(--white);
+    text-align: right;
+    margin-top: 0;
+    padding-bottom: 10px; /* لإعطاء مسافة للخط السفلي */
+    position: relative;
+}
+
+.about-text h2::after {
+    left: auto; /* إلغاء قيمة left الافتراضية */
+    right: 0; /* لتتوافق مع RTL */
+    transform: translateX(0); /* إلغاء التحويل */
+}
+
+.about-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 1em;
+    color: var(--medium-gray);
+}
+
+/* Testimonials Section (قسم آراء العملاء) */
+.testimonials-section {
+    padding: 60px 5%;
+    background-color: var(--white);
+    text-align: center;
+    margin-bottom: 50px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.testimonial-carousel {
+    display: flex;
+    overflow-x: auto; /* يسمح بالتمرير الأفقي إذا كان هناك المزيد من العناصر */
+    scroll-snap-type: x mandatory; /* لجعل التمرير يلتقط العناصر */
+    gap: 30px;
+    padding: 20px 0;
+    justify-content: flex-start; /* لتبدأ من اليمين */
+}
+
+.testimonial-item {
+    flex: 0 0 320px; /* حجم ثابت للعنصر */
+    scroll-snap-align: start; /* محاذاة العنصر عند التمرير */
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    border-right: 3px solid var(--accent-red); /* خط مميز على اليمين */
+}
+
+.testimonial-item p {
+    font-size: 1.1em;
+    font-style: italic;
+    margin-bottom: 15px;
+    color: var(--dark-gray);
+}
+
+.testimonial-item span {
+    font-weight: bold;
+    color: var(--primary-black);
+    display: block;
+    margin-top: 10px;
+}
+
+/* Get a Quote Section (قسم "احصل على عرض سعر") */
+.quote-section {
+    padding: 60px 5%;
+    background-color: var(--secondary-black); /* خلفية داكنة */
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 0; /* لا يوجد مسافة سفلية قبل الفوتر */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.quote-section h2 {
+    color: var(--white);
+    text-align: center;
+}
+
+.quote-section p {
+    font-size: 1.1em;
+    margin-bottom: 2em;
+    color: var(--medium-gray);
+}
+
+.quote-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: var(--primary-black);
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: right; /* محاذاة لليمين */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--white);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+    width: calc(100% - 20px); /* لحساب البادينج */
+    padding: 12px 10px;
+    border: 1px solid var(--dark-gray);
+    border-radius: 5px;
+    background-color: var(--secondary-black);
+    color: var(--white);
+    font-size: 1em;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--dark-gray);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-red);
+    box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.3);
+}
+
+.quote-form .btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+}
+
+.contact-note {
+    margin-top: 30px;
+    font-size: 1.1em;
+    color: var(--medium-gray);
+}
+
+.contact-note a {
+    color: var(--accent-red);
+    font-weight: bold;
+}
+
+/* Footer (التذييل) */
+.main-footer {
+    background-color: var(--primary-black);
+    color: var(--dark-gray);
+    text-align: center;
+    padding: 25px 5%;
+    font-size: 0.9em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-footer p {
+    margin: 0;
+    flex-grow: 1;
+    text-align: right;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    flex-grow: 1;
+    justify-content: flex-start; /* لتبدأ من اليسار في RTL */
+    margin-right: 20px; /* مسافة بين النص والأيقونات */
+}
+
+.social-links a img {
+    height: 25px;
+    filter: invert(100%); /* لجعل الأيقونات بيضاء على خلفية سوداء */
+    transition: transform 0.3s ease;
+}
+
+.social-links a img:hover {
+    transform: translateY(-3px);
+}
+
+/* Responsive Design (التصميم المتجاوب) */
+@media (max-width: 992px) {
+    .main-header {
+        padding: 15px 3%;
+    }
+    .hero-content h1 {
+        font-size: 3.5em;
+    }
+    .hero-content p {
+        font-size: 1.3em;
+    }
+    h2 {
+        font-size: 2em;
+    }
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .about-content img {
+        margin: 0 auto;
+    }
+    .about-text h2 {
+        text-align: center;
+    }
+    .about-text h2::after {
+        right: 50%;
+        transform: translateX(50%);
+    }
+    .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .main-nav {
+        display: none; /* إخفاء قائمة التنقل على الجوال */
+        position: absolute;
+        top: 80px; /* أسفل الهيدر */
+        right: 0;
+        width: 100%;
+        background-color: var(--white);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        animation: slideDown 0.5s ease-out;
+    }
+
+    .main-nav.active {
+        display: flex; /* إظهار القائمة عند تفعيلها */
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .main-nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-nav a {
+        display: block;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--medium-gray);
+        width: 80%;
+        margin: 0 auto;
+    }
+    .main-nav a::after {
+        display: none; /* إخفاء الخط السفلي في قائمة الجوال */
+    }
+
+    .nav-toggle {
+        display: block; /* إظهار زر التبديل */
+    }
+
+    .hero-section {
+        height: 500px;
+    }
+    .hero-content h1 {
+        font-size: 2.8em;
+    }
+    .hero-content p {
+        font-size: 1.1em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    .testimonials-section, .quote-section, .menu-section, .about-section {
+        padding: 40px 3%;
+        margin-bottom: 40px;
+    }
+    .menu-item {
+        margin-bottom: 20px;
+    }
+    .testimonial-carousel {
+        flex-wrap: wrap; /* للسماح للعناصر بالانتقال لأسطر جديدة */
+        justify-content: center;
+        scroll-snap-type: none; /* إلغاء السناب في الجوال */
+        gap: 20px;
+    }
+    .testimonial-item {
+        flex: 0 0 90%; /* حجم أكبر للعنصر على الجوال */
+        max-width: 350px;
+    }
+    .quote-form {
+        padding: 20px;
+    }
+    .main-footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    .main-footer p {
+        text-align: center;
+    }
+    .social-links {
+        justify-content: center;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-header {
+        padding: 10px 2%;
+    }
+    .logo img {
+        height: 45px;
+    }
+    .hero-section {
+        height: 400px;
+    }
+    .hero-content h1 {
+        font-size: 2.2em;
+    }
+    .hero-content p {
+        font-size: 1em;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+    .menu-item img {
+        height: 180px;
+    }
+    .menu-item h3 {
+        font-size: 1.4em;
+    }
+    .testimonial-item {
+        padding: 20px;
+    }
+    .quote-section p {
+        font-size: 1em;
+    }
+    .contact-note {
+        font-size: 0.9em;
+    }
+}
+
+/* Animation for mobile nav slide down */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
